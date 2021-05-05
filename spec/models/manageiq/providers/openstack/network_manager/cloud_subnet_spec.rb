@@ -39,7 +39,7 @@ describe ManageIQ::Providers::Openstack::NetworkManager::CloudSubnet do
       it 'catches errors from provider' do
         expect(service).to receive_message_chain(:subnets, :new).and_raise(bad_request)
         expect do
-          ems_network.create_cloud_subnet(:cloud_tenant => tenant)
+          ems_network.create_cloud_subnet(:cloud_tenant_id => tenant.id)
         end.to raise_error(MiqException::MiqCloudSubnetCreateError)
       end
     end
